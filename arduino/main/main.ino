@@ -123,8 +123,9 @@ void wakeup(char* MACAdress)
 void wakeupbyString(String MACAdress)
 {
     
-         
-  char *macchar;
+  
+
+  char *macchar = new char[MACAdress.length()];
   MACAdress.toCharArray(macchar, MACAdress.length() + 1);
   Serial.println("Ich lebe noch!");
   wakeup(macchar);
