@@ -63,6 +63,7 @@ Device devicelist[15]; //* -> Pointer, weil Objekt nicht erstellt werden kann da
 
 String ip;
 String mac;
+String name;
 
 
 void setup() {
@@ -105,9 +106,28 @@ void setup() {
     request->send(LittleFS, "/main.html", String(), false);
   });
 
+  server.on("/newdevice", HTTP_GET, [](AsyncWebServerRequest *request)
+  {
+    if(request->hasParam("name") && request->hasParam("mac"))
+    {
+      mac = request->getParam("mac")->value();
+      name = request->getParam("name")->value();
+      Serial.println("mac: ");
+      Serial.print(mac);
+      Serial.println("name: ");
+      Serial.print(name);
+      //Device dev(name,mac);
+    }
+    request->send(LittleFS, "/main.html", String(), false);
+  });
 
 
-    server.begin();
+
+  
+
+
+
+  server.begin();
 }
 
 void print(String ip, String mac)
