@@ -5,7 +5,7 @@ This program gives you a simple webinterface and the ability to send WOL Packets
 ## What is working right now
 Waking up devices via MAC is already possible. 
 
-##PLANED TODO
+## PLANED TODO
 * Save Devices in the interface and wake them up whenever you want them to wake up.
 * Wake already saved devices up with ip.
 * Finish README

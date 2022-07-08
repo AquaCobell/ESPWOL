@@ -18,7 +18,14 @@
 </head>
 
 <body>
-   <div class= "container">
+   
+    
+    
+
+    
+    
+    
+   <div class= "container" id="blur">
         <div class = "row">
             <div class = "col-3">
                 <div class = "card mt-3">
@@ -38,7 +45,7 @@
             <div class = "col-6">
                 <div class = "card mt-3">
                     <div class = "card-body">
-                        <h5 class = "card-title">Geraete</h5>
+                        <h5 class = "card-title">Devices</h5>
                         <ul class = "list-group">
                             <li class = "list-group-item  align-items-center">
                                 <scipt>
@@ -58,17 +65,69 @@
 
                             </li>
 
+                           
+
                         </ul>
+
+                        <button type="button" class = "btn btn-success mt-2" id="newdevice">New Device</button>
                     </div>
                 </div>
 
             </div>
         </div>
-
-
-
    </div>
-    
-    
 
+    <script>
+        //
+        $('#newdevice').click(function(){
+            $('#blur').css("filter","blur(3px)");
+            $('.new-device').css("visibility", "visible");
+        });
+
+       
+    </script>
+
+
+   <div class="new-device" style="visibility: hidden; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title " style="text-align:left;float:left;">New Device</h5>
+                    
+            <button type="button" class="btn-close" id="close" style="text-align:right;float:right;" aria-label="Close"></button>         
+            
+            
+            <form action="/newdevice">
+                <div class="form-group mt-5">
+                
+
+                    <label for="name ">Name</label>
+                    <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Name">
+            
+                    <label for="MAC">MAC-Adresse</label>
+                    <input type="text" class="form-control mb-2" id="MAC" placeholder="6b:49:fc:9c:35:2f" name="mac">
+            
+                    <label for="IP">IP-Adresse</label>
+                    <input type="text" class="form-control" id="IP" placeholder="192.168.5.1 (optional)" name="ip">
+            
+                    
+            
+                    <button type="submit" class="btn btn-success mt-2">Add</button>
+            
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+        $('#close').click(function()
+        {
+            $('#blur').css("filter","");
+            $('.new-device').css("visibility", "hidden");
+
+        });
+    </script>
+   
 </body>
+
