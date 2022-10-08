@@ -100,7 +100,7 @@ void setup() {
       
       
         mac = request->getParam("mac")->value();
-        print(ip,mac);
+        //print(ip,mac);
         wakeupbyString(mac);
     }
     request->send(LittleFS, "/main.html", String(), false);
@@ -116,9 +116,10 @@ void setup() {
       Serial.print(mac);
       Serial.println("name: ");
       Serial.print(name);
-      //Device dev(name,mac);
+      //fillArray(name,mac)
     }
     request->send(LittleFS, "/main.html", String(), false);
+    
   });
 
 
@@ -147,12 +148,27 @@ void wakeupbyString(String MACAdress)
   char *macchar;
   MACAdress.toCharArray(macchar, MACAdress.length() + 1);
   Serial.println("Ich lebe noch!");
-  wakeup(macchar);
+  Serial.println(macchar);
+  
+  //wakeup(macchar);
 }
 
 void wakeupbydevice(Device device)
 {
   WOL.sendMagicPacket(device.getmac());
+}
+
+char* convertStringtoChar(String Input)
+{
+  char *charstring;
+  Input.toCharArray(charstring, Input.length() + 1); 
+  //Serial.print("Convert methzode done: " );
+  Serial.print(charstring);
+  if ((charstring == NULL) ) 
+    {
+      Serial.print("c is empty\n");
+    }
+  return charstring;
 }
 
 void fillArray(char* name, char* mac)
@@ -193,4 +209,15 @@ void loop()
     //Serial.println(devicelist[0].getmac());
     //Serial.println(devicelist[1].getmac());
     //Serial.println(devicelist[2].getmac());
+
+
+    String test = "hallo";
+    
+    char* moin = convertStringtoChar(test);
+
+
+    wakeupbyString(test);
+    
+    Serial.print(moin);
+    
 }
